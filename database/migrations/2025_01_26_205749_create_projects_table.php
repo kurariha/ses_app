@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('projects', function (Blueprint $table) {
-        $table->increments('id');
+        $table->id();
         $table->string('project_name'); // 案件名
         $table->string('email_sender'); // メール送信元
         $table->datetime('email_received_at'); // メール受信日時
@@ -40,7 +40,7 @@ return new class extends Migration
 
         //条件
         $table->string('age')->nullable(); // 年齢
-        $table->boolean('foreign_nationality')->default(false); // 外国籍
+        $table->boolean('foreign_nationality')->nullable()->default(false); // 外国籍
         $table->string('salary'); // 金額
         $table->string('adjusted_salary'); // 調整後の金額
         $table->string('time_adjustment')->nullable(); // 精算幅
