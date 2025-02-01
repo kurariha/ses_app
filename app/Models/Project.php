@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
+    use HasFactory;
+    
     protected $fillable = [
         'project_name', 'email_sender', 'email_received_at',
         'days_until_deadline', 'project_deadline', 'job_description',

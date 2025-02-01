@@ -21,10 +21,7 @@ Route::middleware('auth')->group(function () {
 Route::resource('projects', ProjectController::class)
     ->middleware('auth');
 
-Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
-
 Route::resource('projects.contacts', ContactController::class)
     ->middleware('auth');
-
 
 require __DIR__.'/auth.php';

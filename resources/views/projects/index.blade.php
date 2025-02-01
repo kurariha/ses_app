@@ -14,7 +14,9 @@
                 @if ($projects->count() > 0)
 
                 @else
-                    <p>該当する案件が見つかりませんでした。</p>
+                    <div class="flex items-center ml-5">
+                        <b class="text-red-500">該当する案件が見つかりませんでした。</b>
+                    </div>
                 @endif
             </form>
             <table>

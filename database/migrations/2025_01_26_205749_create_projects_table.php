@@ -49,7 +49,7 @@ return new class extends Migration
         $table->string('number_of_positions')->nullable(); // 募集人数
         $table->string('contract')->nullable(); // 契約
         $table->string('business_flow')->nullable(); // 商流
-        $table->integer('interview_count')->nullable(); // 面談回数
+        $table->string('interview_count')->nullable(); // 面談回数
         $table->string('interview_method')->nullable(); // 面談方法
         $table->string('pc_provided')->nullable(); // PC貸与の有無
         $table->text('main_development_environment')->nullable(); // 主な開発環境
