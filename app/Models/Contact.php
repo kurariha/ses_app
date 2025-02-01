@@ -11,10 +11,13 @@ class Contact extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'project_id',
         'name',
         'email',
-        'project_name',
+        'body',
     ];
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
 }

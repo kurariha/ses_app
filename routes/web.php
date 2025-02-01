@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,9 @@ Route::resource('projects', ProjectController::class)
     ->middleware('auth');
 
 Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
+
+Route::resource('projects.contacts', ContactController::class)
+    ->middleware('auth');
 
 
 require __DIR__.'/auth.php';

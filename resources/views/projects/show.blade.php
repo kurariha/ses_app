@@ -1,9 +1,16 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            @if (session('notice'))
+                <div class="bg-blue-100 border-blue-500 text-blue-700 border-l-4 p-4 my-2">
+                    {{ session('notice') }}
+                </div>
+            @endif
+
             <div class="bg-yellow-200 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 flex justify-between">
-                    <div>案件名:{{ $project->project_name }}</div>
+                    <div><p>案件名:{{ $project->project_name }}</p></div>
                     <div><a href="{{ route('projects.index') }}">戻る <i class="fa-solid fa-rotate-left"></i></a></div>
                 </div>
             </div>
@@ -45,6 +52,9 @@
                 <br>
                 <p>補足</p>
                 {{ $project->notes }}
+            </div>
+            <div class="flex justify-center">
+                <a href="{{ route('projects.contacts.create', $project) }}" class="bg-yellow-300 hover:bg-indigo-600 text-gray font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline block mt-4">案件申し込み</a>
             </div>
         </div>
     </div>

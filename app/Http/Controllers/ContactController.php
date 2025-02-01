@@ -20,17 +20,31 @@ class ContactController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Project $project)
     {
-        return view('projects.create');
+        return view('contacts.create', ['project' => $project]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreContactRequest $request)
+    public function store(StoreContactRequest $request, Project $project)
     {
-        //
+        $contact = new Contact($request->all());
+        // $contact->user_id = $request->user()->id;
+        $contact->project_id = $project->id;
+
+        try {
+            // 登録
+            $project->contacts()->save($contact);
+        } catch (\Exception $e) {
+            return back()->withInput()->withErrors($e->getMessage());
+        }
+
+        // 登録したら案件に戻る
+        return redirect()
+            ->route('projects.show', $project)
+            ->with('notice', 'お申込が完了しました。担当者からの連絡をお待ち下さい');
     }
 
     /**

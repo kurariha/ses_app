@@ -4,6 +4,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             </div>
+            <p class="flex justify-center mb-6">案件一覧</p>
             <!-- 🔍 検索フォーム -->
             <form method="GET" action="{{ route('projects.index') }}" class="flex justify-center mb-6 ">
                 <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="キーワードを入力" class="rounded-full mx-4">

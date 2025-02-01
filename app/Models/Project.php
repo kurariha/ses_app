@@ -25,4 +25,9 @@ class Project extends Model
         'contract', 'business_flow', 'interview_count', 'interview_method',
         'pc_provided', 'main_development_environment', 'notes'
     ];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }
