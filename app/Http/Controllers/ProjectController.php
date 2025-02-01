@@ -51,14 +51,14 @@ class ProjectController extends Controller
         "# やってほしいこと\n
         メール本文をプロジェクトテンプレートに変換してください。\n
         元の内容は変更せず、独自性を出す表現にしてください。\n
-        空欄部分はnullと記載し、以下のJSON形式で出力してください。\n
+        空欄部分はnull(文字列ではない)と記載し、以下のJSON形式で出力してください。\n
         (i = 1; i <= 5; i++)とする。\n
         {
         "project_name": "xxx" タイトル[ポジション名]エンジニア（[主要言語/技術]）,
         "email_sender": "xxx" ※メール送信元[会社名、担当者名],
-        "email_received_at": メール受信日時[年/月/日 00:00],
-        "days_until_deadline": (デフォルトは5。案件の期限までの営業日数（int）,
-        "project_deadline": [年/月/日 00:00] (email_received_atにdays_until_deadlineを足した日時。営業日は日本のカレンダーで、土曜・日曜を抜いたものとする。),
+        "email_received_at":年/月/日 00:00(メール受信日時),
+        "days_until_deadline": (デフォルトは'5'。案件の期限までの営業日数（int）,
+        "project_deadline":年/月/日 00:00 (email_received_atにdays_until_deadlineの営業日を加算した日時。営業日は日本のカレンダーで土曜・日曜を抜いたものである。),
         "job_description": "xxx"[使用する技術/言語]を用いた[具体的なタスク][使用するフレームワーク]を活用したフロントエンドまたはバックエンド開発[関連タスク例: テスト、設計、運用保守],
         "required_tech_stack_i": "xxx"[技術名]5件。5件に満たない場合はnullとして表示。,
         "required_skills_detail_i": "xxx"[詳細]5件。5件に満たない場合はnullとして表示。,

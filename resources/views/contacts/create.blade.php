@@ -41,7 +41,7 @@
             </div>
             <div class="flex justify-center">
                 <input type="submit" value="登録"
-                    class="bg-yellow-300 hover:bg-yellow-200 text-gray font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    class="bg-yellow-300 hover:bg-yellow-200 text-gray-700 font-bold rounded-full px-4 py-1">
             </div>
         </form>
     </div>
