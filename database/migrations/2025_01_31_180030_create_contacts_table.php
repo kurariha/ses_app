@@ -16,6 +16,9 @@ return new class extends Migration
             $table->foreignId('project_id')
                 ->constrained()
                 ->cascadeOnDelete();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->cascadeOnDelete();
             $table->string('name');
             $table->string('email');
             $table->text('body');

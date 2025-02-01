@@ -6,6 +6,7 @@ use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
 use App\Models\Contact;
 use App\Models\Project;
+use App\Models\User;
 
 class ContactController extends Controller
 {
@@ -20,9 +21,10 @@ class ContactController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Project $project)
+    public function create(Project $project, User $user)
     {
-        return view('contacts.create', ['project' => $project]);
+        $user =auth()->user();
+        return view('contacts.create', ['project' => $project, 'user' => $user]);
     }
 
     /**
@@ -31,7 +33,7 @@ class ContactController extends Controller
     public function store(StoreContactRequest $request, Project $project)
     {
         $contact = new Contact($request->all());
-        // $contact->user_id = $request->user()->id;
+        $contact->user_id = $request->user()->id;
         $contact->project_id = $project->id;
 
         try {

@@ -20,4 +20,9 @@ class Contact extends Model
     {
         return $this->belongsTo(Project::class);
     }
+
+        public function user()
+    {
+        return $this->belongsTo(user::class);
+    }
 }

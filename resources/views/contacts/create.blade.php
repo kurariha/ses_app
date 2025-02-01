@@ -21,7 +21,7 @@
                 </label>
                 <input type="text" name="name"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    required placeholder="氏名" value="{{ old('name') }}">
+                    required value={{ $user->name }}>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="email">
@@ -29,7 +29,7 @@
                 </label>
                 <input type="text" name="email"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    required placeholder="email" value="{{ old('email') }}">
+                    required value={{ $user->email }}>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="body">
