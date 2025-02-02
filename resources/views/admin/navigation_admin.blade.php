@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('root') }}">
+                    <a href="{{ route('admin.index') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
@@ -20,8 +20,8 @@
                         <x-slot name="trigger">
                             <button
                                 class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                @auth
-                                    <div>{{ Auth::user()->name }}</div>
+                                @auth('admin')
+                                    <div>{{ auth('admin')->user()->name }}</div>
                                 @else
                                     <div>guest</div>
                                 @endauth
@@ -40,8 +40,8 @@
                         <x-slot name="content">
                 </div>
                 <!-- Authentication -->
-                @auth
-                    <x-dropdown-link :href="route('profile.edit')">
+                @auth('admin')
+                    <x-dropdown-link :href="route('admin.profile.edit')">
                         {{ __('Profile') }}
                     </x-dropdown-link>
                     <x-dropdown-link :href="route('projects.create')">
@@ -56,10 +56,10 @@
                         </x-dropdown-link>
                     </form>
                 @else
-                    <x-dropdown-link :href="route('register')">
+                    <x-dropdown-link :href="route('admin.register')">
                         {{ __('Sign Up') }}
                     </x-dropdown-link>
-                    <x-dropdown-link :href="route('login')">
+                    <x-dropdown-link :href="route('admin.login')">
                         {{ __('Log In') }}
                     </x-dropdown-link>
                 @endauth

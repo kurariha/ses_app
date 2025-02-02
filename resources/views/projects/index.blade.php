@@ -43,9 +43,9 @@
                                 @endphp</td>
                             <td>{{ $project->employment_type }}</td>
                             <td>{{ $project->adjusted_salary }}</td>
-                            <td>{{ $project->email_received_at }}
+                            <td>{{ $project->created_at }}
                                 <span
-                                    class="text-red-400 font-bold">{{ date('Y-m-d H:i:s', strtotime('-1 day')) < $project->email_received_at ? 'NEW' : '' }}</span>
+                                    class="text-red-400 font-bold">{{ date('Y-m-d H:i:s', strtotime('-1 day')) < $project->created_at ? 'NEW' : '' }}</span>
                             </td>
                         </tr>
                     @endforeach

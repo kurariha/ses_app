@@ -24,7 +24,7 @@ class ContactController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Project $project, User $user)
+    public function create(Project $project)
     {
         $user =auth()->user();
         return view('contacts.create', ['project' => $project, 'user' => $user]);

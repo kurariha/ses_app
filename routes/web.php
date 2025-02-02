@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProfileController;
@@ -50,7 +51,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     // ログイン後の画面
     Route::get('/', [AdminProjectController::class, 'index'])
-        ->name('root_admin');
+        ->name('admin');
 
     // 以下の中は認証必須のエンドポイントとなる(見せたくないページなどを記載)
     // Route::middleware(['auth:admin'])->group(function () {
@@ -58,4 +59,19 @@ Route::group(['prefix' => 'admin'], function () {
     //     Route::get('dashboard', fn() => view('admin.dashboard'))
     //         ->name('admin.dashboard');
     // });
+
+    Route::middleware(['auth:admin'])->group(function () {
+        Route::get('/', function () {
+            return view('admin.index');
+        })->name('admin.index');
+    });
+
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('/profile', [AdminProfileController::class, 'edit'])
+            ->name('admin.profile.edit');
+        Route::patch('/profile', [AdminProfileController::class, 'update'])
+            ->name('admin.profile.update');
+        Route::delete('/profile', [AdminProfileController::class, 'destroy'])
+            ->name('admin.profile.destroy');
+    });
 });
