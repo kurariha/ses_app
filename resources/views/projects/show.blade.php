@@ -4,7 +4,7 @@
 
             @if (session('notice'))
                 <div class="bg-blue-100 border-blue-500 text-blue-700 border-l-4 p-4 my-2">
-                    {{ session('notice') }}
+                    {!! session('notice') !!}
                 </div>
             @endif
 
@@ -54,7 +54,7 @@
                 {{ $project->notes }}
             </div>
             <div class="flex justify-center">
-                <a href="{{ route('projects.contacts.create', $project) }}" class="bg-yellow-300 hover:bg-indigo-600 text-gray font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline block mt-4">案件申し込み</a>
+                <a href="{{ route('projects.contacts.create', $project) }}" class="bg-yellow-300 hover:bg-yellow-200 text-gray font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline block mt-4">案件申し込み</a>
             </div>
         </div>
     </div>

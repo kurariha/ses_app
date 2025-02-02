@@ -54,11 +54,11 @@ class ProjectController extends Controller
         空欄部分はnull(文字列ではない)と記載し、以下のJSON形式で出力してください。\n
         (i = 1; i <= 5; i++)とする。\n
         {
-        "project_name": "タイトル[ポジション名]エンジニア（[主要言語/技術]）",
+        "project_name": "タイトル、ポジション名、エンジニア（[主要言語/技術]）",
         "email_sender": "メール送信元[会社名、担当者名]",
         "email_received_at":"年/月/日 00:00" ※メール受信日時、notnull,
-        "days_until_deadline": (デフォルトは'5'。案件の期限までの営業日数（int）notnull,
-        "project_deadline":"年/月/日 00:00" (メール受信日時にdays_until_deadlineの営業日を加算した日時。営業日は日本のカレンダーで土曜・日曜以外である。)notnull,
+        "days_until_deadline": (デフォルトは'3'。案件の期限までの営業日数（int）notnull,
+        "project_deadline":"年/月/日 00:00" (email_received_atにdays_until_deadlineを加算した日時。)notnull,
         "job_description": "[使用する技術/言語]を用いた[具体的なタスク][使用するフレームワーク]を活用したフロントエンドまたはバックエンド開発[関連タスク例: テスト、設計、運用保守]",
         "required_tech_stack_i": "[技術名を単語で]5件。5件に満たない場合はnullとして表示",
         "required_skills_detail_i": "[詳細]5件。5件に満たない場合はnullとして表示",
@@ -71,7 +71,7 @@ class ProjectController extends Controller
         "age": "年代"[nullの場合は「不問」とする],
         "foreign_nationality": true/false(外国籍の可否),
         "salary": "報酬レンジ"（スキル・経験による）以上、以下は「～」で表現,
-        "adjusted_salary": "salary-10万円"notnull,
+        "adjusted_salary": "salary-10万円"notnull、万円表示,
         "time_adjustment": "精算幅[時間幅]",
         "payment_terms": "支払サイト[日数]",
         "dress_code": "服装[自由/ビジネスカジュアル/スーツなど]",

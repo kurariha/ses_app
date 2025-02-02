@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateContactRequest;
 use App\Models\Contact;
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
@@ -15,7 +16,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        // ログインユーザーの申し込み済みプロジェクトを取得
+        $contacts = Contact::where('user_id', Auth::id())->with('project')->get();
+        return view('contacts.index', compact('contacts'));
     }
 
     /**
@@ -46,7 +49,7 @@ class ContactController extends Controller
         // 登録したら案件に戻る
         return redirect()
             ->route('projects.show', $project)
-            ->with('notice', 'お申込が完了しました。担当者からの連絡をお待ち下さい');
+            ->with('notice', 'お申込が完了しました。担当者からの連絡をお待ち下さい。<a href="' . route('projects.contacts.index', $project) . '" class="underline">申込み一覧を見る<i class="fa-solid fa-up-right-from-square"></i></a>');
     }
 
     /**

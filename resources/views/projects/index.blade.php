@@ -45,7 +45,8 @@
                             <td>{{ $project->employment_type }}</td>
                             <td>{{ $project->adjusted_salary }}</td>
                             <td>{{ $project->email_received_at }}
-                                <span class="text-red-400 font-bold">{{ date('Y-m-d H:i:s', strtotime('-1 day')) < $project->email_received_at ? 'NEW' : '' }}</span>
+                                <span
+                                    class="text-red-400 font-bold">{{ date('Y-m-d H:i:s', strtotime('-1 day')) < $project->email_received_at ? 'NEW' : '' }}</span>
                             </td>
                             <td><button onclick='location.href="{{ route('projects.show', $project) }}"'
                                     class="bg-yellow-300 hover:bg-yellow-200 text-gray-700 font-bold rounded-full px-4 py-1"><i
@@ -57,8 +58,8 @@
             <!-- ページネーション -->
             {{ $projects->links() }}
             <div class="flex justify-center">
-                <a href="{{ route('projects.create') }}"
-                    class="bg-yellow-300 hover:bg-yellow-200 text-gray-700 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline block mt-4">案件登録</a>
+                <a href="{{ route('projects.contacts.index', $project) }}"
+                    class="bg-yellow-300 hover:bg-yellow-200 text-gray-700 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline block mt-4">申し込み案件一覧</a>
             </div>
         </div>
     </div>

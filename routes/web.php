@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Whoops\Run;
 
 Route::get('/', [ProjectController::class, 'index'])
     ->name('root');
