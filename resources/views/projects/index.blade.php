@@ -27,13 +27,12 @@
                         <th>勤務形態</th>
                         <th>金額</th>
                         <th>案件更新日時</th>
-                        <th>詳細</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($projects as $project)
                         <tr>
-                            <td>{{ $project->project_name }}</td>
+                            <td><a href="{{ route('projects.show', $project) }}" class="hover:text-gray-500 underline">{{ $project->project_name }}</a></td>
                             <td>
                                 @php
                                     $requiredSkills = array_filter([
@@ -48,9 +47,6 @@
                                 <span
                                     class="text-red-400 font-bold">{{ date('Y-m-d H:i:s', strtotime('-1 day')) < $project->email_received_at ? 'NEW' : '' }}</span>
                             </td>
-                            <td><button onclick='location.href="{{ route('projects.show', $project) }}"'
-                                    class="bg-yellow-300 hover:bg-yellow-200 text-gray-700 font-bold rounded-full px-4 py-1"><i
-                                        class="fa-solid fa-arrow-right text-gray-600"></i></button></td>
                         </tr>
                     @endforeach
                 </tbody>

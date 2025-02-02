@@ -27,7 +27,7 @@ class ProjectController extends Controller
                     ->orWhere('work_location', 'LIKE', "%{$keyword}%");
             });
         }
-        $projects = $query->paginate(8);
+        $projects = $query->latest()->paginate(8);
 
         return view('projects.index', ['projects' => $projects, 'keyword' => $keyword]);
     }
@@ -71,7 +71,7 @@ class ProjectController extends Controller
         "age": "年代"[nullの場合は「不問」とする],
         "foreign_nationality": true/false(外国籍の可否),
         "salary": "報酬レンジ"（スキル・経験による）以上、以下は「～」で表現,
-        "adjusted_salary": "salary-10万円"notnull、万円表示,
+        "adjusted_salary": "salary-10万円"notnull,
         "time_adjustment": "精算幅[時間幅]",
         "payment_terms": "支払サイト[日数]",
         "dress_code": "服装[自由/ビジネスカジュアル/スーツなど]",
