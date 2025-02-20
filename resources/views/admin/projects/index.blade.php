@@ -19,7 +19,7 @@
                     </div>
                 @endif
             </form>
-            <table>
+            <table class="admin-table">
                 <thead>
                     <tr>
                         <th>案件名</th>

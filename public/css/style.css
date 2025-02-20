@@ -10,8 +10,15 @@ table {
     width: 100%;
 }
 
-th {
+.user-table th {
     background: #FEF075;
+    border: solid 1px #ccc;
+    color: black;
+    padding: 10px;
+}
+
+.admin-table th {
+    background: #90edb2;
     border: solid 1px #ccc;
     color: black;
     padding: 10px;
