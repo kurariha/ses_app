@@ -18,7 +18,7 @@
             @if ($contacts->isEmpty())
                 <p>申し込み済みのプロジェクトはありません。</p>
             @else
-                <table>
+                <table class="user-table">
                     <thead>
                         <tr>
                             <th>案件名</th>
