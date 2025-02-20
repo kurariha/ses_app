@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 use Whoops\Run;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminRegisterController;
-use App\Http\Controllers\AdminProjectController;
+use App\Http\Controllers\Admin\AdminProjectController;
+use App\Models\Project;
 
 Route::get('/', [ProjectController::class, 'index'])
     ->name('root');
@@ -24,7 +25,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('projects', ProjectController::class)
+    ->except(['create'])
     ->middleware('auth');
+
 
 Route::resource('projects.contacts', ContactController::class)
     ->middleware('auth');
@@ -49,23 +52,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('login', [AdminLoginController::class, 'login']);
 
-    // ログイン後の画面
-    Route::get('/', [AdminProjectController::class, 'index'])
-        ->name('admin');
-
-    // 以下の中は認証必須のエンドポイントとなる(見せたくないページなどを記載)
-    // Route::middleware(['auth:admin'])->group(function () {
-    //     // ダッシュボード
-    //     Route::get('dashboard', fn() => view('admin.dashboard'))
-    //         ->name('admin.dashboard');
-    // });
-
-    Route::middleware(['auth:admin'])->group(function () {
-        Route::get('/', function () {
-            return view('admin.index');
-        })->name('admin.index');
-    });
-
+    // プロフィール
     Route::middleware('auth:admin')->group(function () {
         Route::get('/profile', [AdminProfileController::class, 'edit'])
             ->name('admin.profile.edit');
@@ -73,5 +60,17 @@ Route::group(['prefix' => 'admin'], function () {
             ->name('admin.profile.update');
         Route::delete('/profile', [AdminProfileController::class, 'destroy'])
             ->name('admin.profile.destroy');
+    });
+});
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    // ログイン後の画面: ミドルウェアをauth:adminに適用
+    Route::middleware(['auth:admin'])->group(function () {
+        // /admin にアクセスしたら AdminProjectController@index を呼ぶ
+        Route::get('/', [AdminProjectController::class, 'index'])
+            ->name('admin.index');
+
+        Route::middleware(['auth:admin'])->group(function () {
+            Route::resource('projects', AdminProjectController::class);
+        });
     });
 });
